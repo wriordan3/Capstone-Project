@@ -13,7 +13,10 @@ public class PlayerMap {
 	}
 	
 	public void updateValue( Trait t, int newVal ) {
-		traits.replace( t, newVal );
+		traits.replace( t, traits.get(t) + newVal );
 	}
 	
+	public Hashtable<Trait, Integer> get() {
+		return this.traits;
+	}
 }

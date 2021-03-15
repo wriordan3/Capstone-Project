@@ -1,7 +1,8 @@
 
 public enum Trait {
 	LAWFUL( "Lawful" ),
-	NEUTRAL( "Neutral" ),
+	NEUTRAL1( "Neutral (First axis)" ),
+	NEUTRAL2( "Neutral (Second axis)"),
 	CHAOTIC( "Chaotic" ),
 	GOOD( "Good" ),
 	EVIL( "Evil" );
