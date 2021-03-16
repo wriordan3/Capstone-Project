@@ -66,7 +66,8 @@ public class Combat {
 			//if list empty, end loop return playerDead
 			if( enemies.size() == 0 ) {
 				enemiesDead = true;
-				return playerDead;
+				System.out.println( "Victory!" );
+				return true;
 			}
 			//for each enemy, get random ability
 			for( Enemy e : enemies ) {
@@ -79,7 +80,7 @@ public class Combat {
 				if( player.isDead() ) {
 					playerDead = true;
 					System.out.println( "You died. Ending game." );
-					return playerDead;
+					return false;
 				}
 			}
 			

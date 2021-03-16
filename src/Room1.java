@@ -4,14 +4,16 @@ import java.util.Scanner;
 public class Room1 implements Room {
 
 
-	public static void init() {
-		Main.currentRoom = new Room1();
+	public static boolean init() {
+		Room.setRoom( new Room1() );
 		try {
-			Main.currentRoom.play();
+			Room.getCurrentRoom().play();
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return false;
 		}
+		return true;
 	}
 	@Override
 	public void play() throws InterruptedException {

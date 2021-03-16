@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 
 public class PlayerSkill extends Skill {
 
@@ -46,5 +48,13 @@ public class PlayerSkill extends Skill {
 	public String toString() {
 		// TODO Auto-generated method stub
 		return String.format( "%s (Unlocks at Level %d) - %s", name, level, description );
+	}
+	
+	public static List<PlayerSkill> getAllSkills() {
+		ArrayList<PlayerSkill> skills = new ArrayList<PlayerSkill>();
+		skills.add( new PlayerSkill(false, 1, 8, 14, 6, "Thruster Punch", "Use your exosuit's arm-mounted thruster to deliver a powerful punch. (8 damage | 14 + 1d6 to hit)"));
+		skills.add( new PlayerSkill( true, 1, 4, 12, 10, "Focused Shot", "Time the perfect shot for a higher chance to critical hit. Can deliver 3x damage super-criticals (4 damage + weapon  | 12 + 1d10 to hit)"));
+		skills.add( new PlayerSkill( true, 2, 0, 20, 0, "Assisted Shot", "Echo takes control of your exosuit's targeting system to ensure a critical hit. ( 2 * weapon damage | guaranteed crit )"));
+		return skills;
 	}
 }

@@ -49,7 +49,22 @@ public class Player {
 	public String getName() {
 		return this.name;
 	}
-	
+	public void levelUp() {
+		this.level++;
+		System.out.print( "\n" );
+		for( PlayerSkill s : PlayerSkill.getAllSkills() ) {
+			if( s.level == this.level ) {
+				this.skills.add( s );
+				System.out.println( "You have learned: " + s.toString() );
+			}
+		}
+	}
+	public int getCurrentHP() {
+		return currentHP;
+	}
+	public int getMaxHP() {
+		return maxHP;
+	}
 	public String toString() {
 		return String.format( "%s - %d / %dHP", this.name, this.currentHP, this.maxHP );
 	}
@@ -62,6 +77,10 @@ public class Player {
 		currentHP -= i;
 		
 	}
+	public void restoreHealth() {
+		currentHP = maxHP;
+		System.out.println( "Health restored." );
+	}
 	public Weapon getWeapon() {
 		return this.primary;
 	}
@@ -69,6 +88,7 @@ public class Player {
 		return skills;
 	}
 	public Alignment getAlignment() {
+		this.alignment = new Alignment( firstAxis, secondAxis );
 		return this.alignment;
 	}
 	public boolean isDead() {
