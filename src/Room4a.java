@@ -1,10 +1,10 @@
 
-public class Room4 implements Room{
+public class Room4a implements Room {
 
 	@Override
 	public void play() throws InterruptedException {
 		Room.setRoom( this );
-		System.out.println( "Loaded main mission" );
+		System.out.println( "Loaded side mission" );
 	}
-	
+
 }

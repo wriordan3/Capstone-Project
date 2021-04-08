@@ -29,6 +29,14 @@ public class HomeRoom implements Room {
 		missions.remove( room );
 		missionStrings.remove( missionText );
 	}
+	
+	public List<Room> getMissions() {
+		return missions;
+	}
+	
+	public List<String> getMissionStrings() {
+		return missionStrings;
+	}
 
 	@Override
 	public void play() throws InterruptedException {
@@ -51,13 +59,14 @@ public class HomeRoom implements Room {
 			System.out.println( "1) Quartermaster" );
 			System.out.println( "2) Exosuit Specialist" );
 			System.out.println( "3) Medical Facility" );
+			System.out.println( "4) Save Game" );
 			for( int i = 0; i < missionStrings.size(); i++ ) {
-				System.out.println( (i+4 ) + ") " + missionStrings.get( i ) );
+				System.out.println( (i+5 ) + ") " + missionStrings.get( i ) );
 			}
 			String selection = kbd.next();
 			Boolean isValid = false;
 			while( isValid != true ) {
-				if( selection.isEmpty() || Integer.parseInt( selection ) > missionStrings.size() + 3 || Integer.parseInt( selection ) <  1 ) {
+				if( selection.isEmpty() || Integer.parseInt( selection ) > missionStrings.size() + 4 || Integer.parseInt( selection ) <  1 ) {
 					System.out.println( "Please enter a valid selection." );
 					selection = kbd.next();
 				}
@@ -75,8 +84,11 @@ public class HomeRoom implements Room {
 			else if( Integer.parseInt( selection ) == 3) {
 				medicalFacility();
 			}
+			else if( Integer.parseInt( selection ) == 4 ) {
+				Main.saveGame();
+			}
 			else {
-				nextRoom = missions.get( Integer.parseInt( selection ) - 4 );
+				nextRoom = missions.get( Integer.parseInt( selection ) - 5 );
 				isDone = true;
 			}
 		}

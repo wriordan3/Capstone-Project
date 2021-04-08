@@ -13,6 +13,12 @@ public class Weapon {
 	public int getDamage() {
 		return this.damage;
 	}
+	public String getName() {
+		return this.name;
+	}
+	public String getDescription() {
+		return this.description;
+	}
 	
 	public String toString() {
 		return String.format( "%s - (&d damage) %s", name, damage, description );

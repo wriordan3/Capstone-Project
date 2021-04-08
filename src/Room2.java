@@ -58,7 +58,7 @@ public class Room2 implements Room {
 			Thread.sleep( 2000 );
 			System.out.println( ""
 					+ "\nBefore you can decide yourself, you respond with a somber, involuntary \"Yes.\". " );
-			HomeRoom.getInstance().addMission( new Room4(), "Find replacement parts for Echo. (Recommended Level: 2" );
+			HomeRoom.getInstance().addMission( new Room3(), "Find replacement parts for Echo. (Recommended Level: 2" );
 			Thread.sleep( 1000 );
 			System.out.println( "\nYou can't tell whether you are in control, or simply a character in someone else's game.");
 		}
@@ -100,7 +100,7 @@ public class Room2 implements Room {
 			Thread.sleep( 2000 );
 			System.out.println( ""
 					+ "\nBefore you can decide yourself, you respond with a somber, involuntary \"Yes.\". " );
-			HomeRoom.getInstance().addMission( new Room4(), "Find replacement parts for Echo. (Recommended Level: 2" );
+			HomeRoom.getInstance().addMission( new Room3(), "Find replacement parts for Echo. (Recommended Level: 2" );
 			Thread.sleep( 1000 );
 			System.out.println( "\nYou can't tell whether you are in control, or simply a character in someone else's game.");
 			
@@ -142,7 +142,7 @@ public class Room2 implements Room {
 			System.out.println( ""
 					+ "\nBefore you can decide yourself, you respond with a somber, involuntary \"Yes.\". " );
 
-			HomeRoom.getInstance().addMission( new Room4(), "Investigate the signals from Echo's 'brothers'. (Recommended Level: 2)" );
+			HomeRoom.getInstance().addMission( new Room3(), "Investigate the signals from Echo's 'brothers'. (Recommended Level: 2)" );
 			Thread.sleep( 1000 );
 			System.out.println( "\nYou can't tell whether you are in control, or simply a character in someone else's game.");
 		}
@@ -184,7 +184,7 @@ public class Room2 implements Room {
 			System.out.println( ""
 					+ "\nBefore you can decide yourself, you respond with a somber, involuntary \"Yes.\". " );
 
-			HomeRoom.getInstance().addMission( new Room4(), "Investigate the signals from Echo's 'brothers'. (Recommended Level: 2)" );
+			HomeRoom.getInstance().addMission( new Room3(), "Investigate the signals from Echo's 'brothers'. (Recommended Level: 2)" );
 			Thread.sleep( 1000 );
 			System.out.println( "\nYou can't tell whether you are in control, or simply a character in someone else's game.");
 		}
@@ -204,6 +204,7 @@ public class Room2 implements Room {
 		Thread.sleep( 1000 );
 		System.out.println( "\nBrother.");
 		Thread.sleep( 5000 );
+		kbd.close();
 		HomeRoom.getInstance().play();
 	}
 

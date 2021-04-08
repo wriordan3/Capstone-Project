@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Scanner;
 
 
 public class Player {
@@ -23,8 +24,8 @@ public class Player {
 		this.armor = new Armor( 10, "Genitech EVA Exo-Suit", "A mass-produced exo-suit for the first humans travelling to Soteria. Provides moderate protection from hazardous climates and functions in space. Light armor.");
 		armorClass = level + armor.getArmorClassModifier();
 		this.skills = new ArrayList<PlayerSkill>();
-		skills.add( new PlayerSkill(false, 1, 8, 14, 6, "Thruster Punch", "Use your exosuit's arm-mounted thruster to deliver a powerful punch. (8 damage | 14 + 1d6 to hit)"));
-		skills.add( new PlayerSkill( true, 1, 4, 12, 10, "Focused Shot", "Time the perfect shot for a higher chance to critical hit. Can deliver 3x damage super-criticals (4 damage + weapon  | 12 + 1d10 to hit)"));
+		skills.add(PlayerSkill.getAllSkills().get( 0 ));
+		skills.add(PlayerSkill.getAllSkills().get( 1 ));
 		ArrayList<Trait> first = new ArrayList<Trait>();
 		first.add( Trait.LAWFUL );
 		first.add( Trait.NEUTRAL1 );
@@ -35,19 +36,23 @@ public class Player {
 		second.add( Trait.NEUTRAL2 );
 		second.add( Trait.EVIL );
 		secondAxis = new PlayerMap( second );
-		first.add(Trait.LAWFUL);
-		first.add(Trait.NEUTRAL1);
-		first.add(Trait.CHAOTIC);
-		second.add(Trait.GOOD);
-		second.add(Trait.NEUTRAL2);
-		second.add(Trait.EVIL);
 		maxHP = 75;
 		currentHP = maxHP;
 		this.alignment = new Alignment( firstAxis, secondAxis );
 	}
-	
+	public PlayerMap getFirst() {
+		return this.firstAxis;
+	}
+	public PlayerMap getSecond() {
+		return this.secondAxis;
+	}
 	public String getName() {
 		return this.name;
+	}
+	public void printAllSkills() {
+		for( int i = 0; i < this.getSkills().size(); i++  ) {
+			System.out.println( (i + 1) + ") " + this.getSkills().get( i ).toString() );
+		}
 	}
 	public void levelUp() {
 		this.level++;
@@ -58,6 +63,36 @@ public class Player {
 				System.out.println( "You have learned: " + s.toString() );
 			}
 		}
+		int c = 1;
+
+		System.out.println( "\nWhich skill would you like to augment?" );
+		for( PlayerSkill s : getSkills() ) {
+			if( s.getDesired().equals( this.getAlignment().getFirst()) || s.getDesired().equals( this.getAlignment().getSecond())) {
+				System.out.println( (c) + ") " + s.toString() );
+			}
+			c++;
+		}
+		Scanner kbd = new Scanner( System.in );
+		String selection = kbd.next();
+		boolean isValid = false;
+		while( isValid != true ) {
+			if( selection.isEmpty() || 
+					Integer.parseInt( selection ) > getSkills().size() ||
+					Integer.parseInt( selection ) <  1 ||
+					!getSkills().get( Integer.parseInt( selection ) - 1).canAugment()) {
+				System.out.println( "Please enter a valid selection." );
+				selection = kbd.next();
+			}
+			else { 
+				isValid = true;
+			
+			}
+		}
+		getSkills().get( Integer.parseInt( selection ) - 1).augment();
+		System.out.println( "Skill successfully augmented" );
+	}
+	public int getLevel() {
+		return this.getLevel();
 	}
 	public int getCurrentHP() {
 		return currentHP;
@@ -65,17 +100,26 @@ public class Player {
 	public int getMaxHP() {
 		return maxHP;
 	}
+	public void setMaxHP( int n ) {
+		maxHP = n;
+	}
 	public String toString() {
 		return String.format( "%s - %d / %dHP", this.name, this.currentHP, this.maxHP );
 	}
 
 	public boolean checkDamage(int attackAccuracy) {
+		armorClass = level + armor.getArmorClassModifier();
 		return attackAccuracy > armorClass;
 	}
 
 	public void takeDamage(int i) {
 		currentHP -= i;
 		
+	}
+	public void restoreHealth( double healing ) {
+		currentHP += healing;
+		if( currentHP >= maxHP ) currentHP = maxHP;
+		System.out.println( healing + " health restored." );
 	}
 	public void restoreHealth() {
 		currentHP = maxHP;
@@ -130,6 +174,10 @@ public class Player {
 		}
 		
 		
+	}
+
+	public Armor getArmor() {
+		return armor;
 	}
 	
 	

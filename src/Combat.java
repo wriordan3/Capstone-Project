@@ -39,9 +39,7 @@ public class Combat {
 			
 			//Get ability the player would like to use.
 			System.out.println( "...with which ability?");
-			for( int i = 0; i < this.player.getSkills().size(); i++  ) {
-				System.out.println( (i + 1) + ") " + this.player.getSkills().get( i ).toString() );
-			}
+			player.printAllSkills();
 			selection = kbd.next();
 			isValid = false;
 			while( isValid != true ) {
@@ -71,16 +69,21 @@ public class Combat {
 			}
 			//for each enemy, get random ability
 			for( Enemy e : enemies ) {
-				int skillIndexE = (int)( Math.random() * e.getSkills().size() );
-				//check playerHealth, if dead break loop
-
-				//cast enemy ability
-				System.out.println( String.format( "\n%s used %s on %s", e.getName(), e.getSkills().get(skillIndexE).toString(), this.player.getName() ));
-				e.getSkills().get( skillIndexE ).cast( player );
-				if( player.isDead() ) {
-					playerDead = true;
-					System.out.println( "You died. Ending game." );
-					return false;
+				if( !e.isFrozen() ) {
+					int skillIndexE = (int)( Math.random() * e.getSkills().size() );
+					//check playerHealth, if dead break loop
+	
+					//cast enemy ability
+					System.out.println( String.format( "\n%s used %s on %s", e.getName(), e.getSkills().get(skillIndexE).toString(), this.player.getName() ));
+					e.getSkills().get( skillIndexE ).cast( player );
+					if( player.isDead() ) {
+						playerDead = true;
+						System.out.println( "You died. Ending game." );
+						return false;
+					}
+				}
+				else {
+					e.unfreeze();
 				}
 			}
 			

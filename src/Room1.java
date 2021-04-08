@@ -41,12 +41,11 @@ public class Room1 implements Room {
 		}
 		if( Integer.parseInt( selection ) == 1 ) {
 			//Went to outpost
-			System.out.println( " \n\nYou begin to make your way east towards the outpost, inspecting both your equipment and surroundings. "
+			System.out.println( "\n\nYou begin to make your way east towards the outpost, inspecting both your equipment and surroundings. "
 					+ "\nYou are equipped with a basic exosuit and standard-issue handgun. "
 					+ "\n	The exosuit has arm-mounted thrusters for quick maneuvers in low-G environments. Learned \"Thruster Punch\""
 					+ "\n	The handgun's optics are well-suited for close range. Learned \"Focused Shot\"");
-			System.out.println( "		" + Room.getPlayer().getSkills().get(0).toString() );
-			System.out.println(  "		" + Room.getPlayer().getSkills().get(1).toString() );
+			Room.getPlayer().printAllSkills();
 			Thread.sleep( 5000 );
 			System.out.println( "\n\nAfter hiking for some time you notice multiple trails of dust making their way towards you from the north."
 					+ "\nYou reach for your handgun. As they get closer you notice that the clouds are being made by a wild animal pursuing a small hovering robot of some kind.");

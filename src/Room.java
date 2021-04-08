@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.Scanner;
 
 public interface Room {
 	
@@ -34,5 +35,20 @@ public interface Room {
 	}
 	public static Room getCurrentRoom() {
 		return Main.currentRoom;
+	}
+	public static int getSelection( Scanner kbd, int n ) {
+		String selection = kbd.next();
+		boolean isValid = false;
+		while( isValid != true ) {
+			if( selection.isEmpty() || Integer.parseInt( selection ) > n || Integer.parseInt( selection ) <  1 ) {
+				System.out.println( "Please enter a valid selection." );
+				selection = kbd.next();
+			}
+			else { 
+				isValid = true;
+			
+			}
+		}
+		return Integer.parseInt( selection ) - 1;
 	}
 }

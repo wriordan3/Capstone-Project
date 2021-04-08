@@ -1,3 +1,4 @@
+import java.util.Collection;
 
 public class Armor {
 	private int armorClassModifier;
@@ -11,5 +12,13 @@ public class Armor {
 	}
 	public int getArmorClassModifier() {
 		return this.armorClassModifier;
+	}
+	public String getName() {
+		// TODO Auto-generated method stub
+		return name;
+	}
+	
+	public String getDescription() {
+		return description;
 	}
 }
