@@ -1,5 +1,5 @@
 "# Capstone-Project" 
-This program runs in command line with no arguments. Point of entry is "Main".
+This program runs in command line with no arguments. Point of entry is "Main". DO NOT USE .JAR
 
 The game progresses through a series of questions with numbered inputs.
 Enter only the number of the option would like to choose and press Enter to proceed.
