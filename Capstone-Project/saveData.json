@@ -1,0 +1,41 @@
+{
+    "completed missions": [
+        {
+            "description": "Go to the place you saw in your dream. (Recommended Level: 3)",
+            "room": "public class Room4"
+        },
+        {
+            "description": "Find more of Echo's siblings. (Recommended Level: 4)",
+            "room": "public class Room4a"
+        }
+    ],
+    "player": {
+        "weapon": {
+            "damage": 8,
+            "name": "Genitech EVA-Tac Mk.I",
+            "description": "Genitech EVA-Tac Mk.I"
+        },
+        "armor": {
+            "armorClassModifier": 10,
+            "name": "Genitech EVA Exo-Suit",
+            "description": "A mass-produced exo-suit for the first humans travelling to Soteria. Provides moderate protection from hazardous climates and functions in space. Light armor."
+        },
+        "firstAxis": [
+            39,
+            61
+        ],
+        "level": 2,
+        "name": "test",
+        "currency": 0,
+        "completed": [],
+        "augs": [
+            1,
+            0,
+            0
+        ],
+        "secondAxis": [
+            45,
+            55
+        ]
+    }
+}
